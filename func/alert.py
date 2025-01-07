@@ -33,6 +33,7 @@ class Alert(commands.Cog):
                                             description=f"{alert.location_title}",
                                             color=disnake.Colour.red(),
                                             timestamp=datetime.now())
+                    message.set_image(file=disnake.File("func/alert.png"))
                     await channel.send(embed=message)
 
             await asyncio.sleep(60)
