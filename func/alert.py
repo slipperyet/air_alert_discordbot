@@ -33,6 +33,24 @@ class Alert(commands.Cog):
                                             description=f"{alert.location_title}",
                                             color=disnake.Colour.red(),
                                             timestamp=datetime.now())
+                    
+                    alert_type = {}
+                    if alert.alert_type == "air_raid":
+                        alert_type = "Воздушная тревога"
+            
+                    elif alert.alert_type == "artillery_shelling":
+                        alert_type = "Артилерийский обстрел"
+
+                    elif alert.alert_type == "urban_fights":
+                        alert_type = "Городской бой"
+
+                    elif alert.alert_type == "chemical":
+                        alert_type = "Химическая угроза"
+
+                    else:
+                        alert_type = "Ядерная угроза"
+
+                    message.add_field(name='Тип тревоги:', value=alert_type, inline=True)
                     message.set_image(file=disnake.File("func/alert.png"))
                     await channel.send(embed=message)
 
